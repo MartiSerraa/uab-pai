@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Telecomunicacions</title>
+  <style>
+    :root {
+      --blau: #145da0;
+      --fons: #eef6fb;
+      --text: #17324d;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background: var(--fons);
+    }
+
+    header {
+      padding: 3rem 1rem;
+      text-align: center;
+      color: white;
+      background: var(--blau);
+    }
+
+    header h1 {
+      margin: 0 0 0.5rem;
+    }
+
+    main {
+      width: min(900px, 92%);
+      margin: 2rem auto;
+    }
+
+    section {
+      margin-bottom: 1.5rem;
+      padding: 1.5rem;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 8px #00000012;
+    }
+
+    h2 {
+      margin-top: 0;
+      color: var(--blau);
+    }
+
+    .tecnologies {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+
+    .tecnologia {
+      padding: 1rem;
+      border-left: 4px solid var(--blau);
+      background: #f4f9fc;
+    }
+
+    footer {
+      padding: 1rem;
+      text-align: center;
+      color: white;
+      background: #17324d;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Telecomunicacions</h1>
+    <p>La tecnologia que connecta persones i informació arreu del món.</p>
+  </header>
+
+  <main>
+    <section>
+      <h2>Què són?</h2>
+      <p>
+        Les telecomunicacions són el conjunt de tècniques i sistemes que permeten
+        transmetre veu, dades, imatges i vídeo a distància, mitjançant xarxes
+        cablejades o sense fils.
+      </p>
+    </section>
+
+    <section>
+      <h2>Principals tecnologies</h2>
+      <div class="tecnologies">
+        <div class="tecnologia">
+          <h3>Fibra òptica</h3>
+          <p>Ofereix connexions ràpides i estables per transmetre grans quantitats de dades.</p>
+        </div>
+        <div class="tecnologia">
+          <h3>Telefonia mòbil</h3>
+          <p>Permet comunicar-se i accedir a Internet des de gairebé qualsevol lloc.</p>
+        </div>
+        <div class="tecnologia">
+          <h3>Satèl·lits</h3>
+          <p>Faciliten les comunicacions en zones remotes i els sistemes de navegació.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Aplicacions</h2>
+      <ul>
+        <li>Videotrucades i missatgeria instantània.</li>
+        <li>Internet i serveis al núvol.</li>
+        <li>Televisió, ràdio i transmissió en directe.</li>
+        <li>Telemedicina i educació a distància.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer>
+    <p>Introducció a les telecomunicacions</p>
+  </footer>
+</body>
+</html>
