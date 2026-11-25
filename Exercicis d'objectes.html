@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+	<meta charset="utf-8">
+	<title>Exercici d'objectes</title>
+</head>
+<body>
+<h1>Exercici d'objectes: empreses i paquets</h1>
+
+<script>
+/* ==========================================================
+   1. DEFINICIÓ DE LES CLASSES
+   ========================================================== */
+class Empresa {
+	constructor(nom, adreca) {
+		this.nom = nom;
+		this.adreca = adreca;
+		this.deute = 0;   // Quan creem l'empresa té deute 0
+	}
+	incrementaDeute(n) {
+		this.deute += n;
+	}
+	totPagat() {
+		this.deute = 0;
+	}
+}
+
+class Paquet {
+	constructor(origen, destinacio, cost) {
+		this.origen = origen;         // objecte de tipus Empresa
+		this.destinacio = destinacio; // objecte de tipus Empresa
+		this.cost = cost;
+		this.lliurat = false;
+	}
+	lliuramentFet() {
+		this.origen.incrementaDeute(this.cost);
+		this.lliurat = true;
+	}
+}
+
+/* ==========================================================
+   2. FUNCIONS PER LLISTAR
+   ========================================================== */
+function llistaEmpreses(empreses) {
+	for (var i = 0; i < empreses.length; i++) {
+		document.write(empreses[i].nom + " (" + empreses[i].adreca + ") - Deute: " +
+			empreses[i].deute + " €<br>");
+	}
+}
+
+function llistaPaquets(paquets) {
+	for (var i = 0; i < paquets.length; i++) {
+		document.write("Paquet " + (i + 1) + ": " + paquets[i].origen.nom + " → " +
+			paquets[i].destinacio.nom + " | Cost: " + paquets[i].cost +
+			" € | Lliurat: " + (paquets[i].lliurat ? "Sí" : "No") + "<br>");
+	}
+}
+
+// EXERCICI 1: llistat de les empreses que tenen deutes pendents
+function llistaEmpresesAmbDeute(empreses) {
+	var trobades = 0;
+	for (var i = 0; i < empreses.length; i++) {
+		if (empreses[i].deute > 0) {
+			document.write(empreses[i].nom + " - Deute pendent: " +
+				empreses[i].deute + " €<br>");
+			trobades++;
+		}
+	}
+	if (trobades == 0) {
+		document.write("Cap empresa té deutes pendents.<br>");
+	}
+}
+
+// EXERCICI 2: llistat dels paquets pendents de ser lliurats
+// (empresa origen, empresa final i cost de l'enviament)
+function llistaPaquetsPendents(paquets) {
+	var trobats = 0;
+	for (var i = 0; i < paquets.length; i++) {
+		if (!paquets[i].lliurat) {
+			document.write("Origen: " + paquets[i].origen.nom +
+				" | Destinació: " + paquets[i].destinacio.nom +
+				" | Cost: " + paquets[i].cost + " €<br>");
+			trobats++;
+		}
+	}
+	if (trobats == 0) {
+		document.write("No hi ha cap paquet pendent de lliurar.<br>");
+	}
+}
+
+/* ==========================================================
+   3. DADES: 3 empreses i 4 paquets
+   ========================================================== */
+var empreses = [
+	new Empresa("Empresa A", "Carrer Major 1, Barcelona"),
+	new Empresa("Empresa B", "Avinguda Diagonal 20, Barcelona"),
+	new Empresa("Empresa C", "Plaça Catalunya 5, Sabadell")
+];
+
+var paquets = [
+	new Paquet(empreses[0], empreses[1], 10),
+	new Paquet(empreses[1], empreses[2], 25),
+	new Paquet(empreses[2], empreses[0], 15),
+	new Paquet(empreses[0], empreses[2], 30)
+];
+
+/* ==========================================================
+   4. PROGRAMA
+   ========================================================== */
+document.write("<h2>Empreses (abans dels lliuraments)</h2>");
+llistaEmpreses(empreses);
+
+document.write("<h2>Paquets (abans dels lliuraments)</h2>");
+llistaPaquets(paquets);
+
+// Lliurem dos paquets: el 1 i el 2
+paquets[0].lliuramentFet();
+paquets[1].lliuramentFet();
+
+document.write("<h2>Empreses (després dels lliuraments)</h2>");
+llistaEmpreses(empreses);
+
+document.write("<h2>Exercici 1: Empreses amb deutes pendents</h2>");
+llistaEmpresesAmbDeute(empreses);
+
+document.write("<h2>Exercici 2: Paquets pendents de lliurar</h2>");
+llistaPaquetsPendents(paquets);
+</script>
+
+</body>
+</html>
